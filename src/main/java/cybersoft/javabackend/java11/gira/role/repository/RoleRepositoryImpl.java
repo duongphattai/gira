@@ -10,7 +10,6 @@ import cybersoft.javabackend.java11.gira.role.model.Role;
 
 @Repository
 public class RoleRepositoryImpl implements RoleRepository {
-
 	@Autowired
 	private SessionFactory sessionFactory;
 

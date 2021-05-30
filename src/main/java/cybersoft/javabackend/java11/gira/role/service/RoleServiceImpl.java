@@ -7,15 +7,13 @@ import cybersoft.javabackend.java11.gira.role.model.Role;
 import cybersoft.javabackend.java11.gira.role.repository.RoleRepository;
 
 @Service
-public class RoleServiceImpl implements RoleService{
-
+public class RoleServiceImpl implements RoleService {
 	@Autowired
 	private RoleRepository _repository;
 	
 	@Override
 	public void save(Role role) {
 		_repository.save(role);
-		
 	}
-	
+
 }

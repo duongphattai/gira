@@ -14,12 +14,11 @@ import cybersoft.javabackend.java11.gira.role.service.RoleService;
 @RestController
 @RequestMapping("/api/role")
 public class RoleController {
-
 	@Autowired
 	private RoleService _service;
 
 	@PostMapping("")
-	public ResponseEntity<Object> save(@RequestBody Role role) {
+	public ResponseEntity<Object> save(@RequestBody Role role){
 		System.out.println(role);
 		_service.save(role);
 		return new ResponseEntity<>(HttpStatus.CREATED);
