@@ -1,8 +1,10 @@
 package cybersoft.javabackend.java11.gira.role.controller;
 
+import org.hibernate.mapping.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +20,18 @@ public class RoleController {
 	private RoleService _service;
 
 	@PostMapping("")
-	public ResponseEntity<Object> save(@RequestBody Role role){
+	public ResponseEntity<Object> save(@RequestBody Role role) {
 		System.out.println(role);
 		_service.save(role);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
+
+	@GetMapping("")
+	public ResponseEntity<Object> findAll() {
+
+		List result = _service.findAll();
+
+		return new ResponseEntity<>(result, HttpStatus.OK);
+	}
+
 }
