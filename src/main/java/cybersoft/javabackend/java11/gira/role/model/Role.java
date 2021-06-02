@@ -11,9 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Data
+
 @Entity
 @Table(name = "role")
 public class Role {
@@ -25,6 +25,7 @@ public class Role {
 	private String description;
 	
 	@OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
+	@JsonIgnore
 	Set<Account> accounts;
 	
 	public Long getId() {

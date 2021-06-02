@@ -1,18 +1,21 @@
 package cybersoft.javabackend.java11.gira.role.repository;
 
+import java.util.List;
 
-
-import org.hibernate.mapping.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import cybersoft.javabackend.java11.gira.role.model.Role;
 
-public interface RoleRepository {
+@Repository
+public interface RoleRepository extends JpaRepository<Role, Long> {
 	
-	List findAll();
 	
-	void save(Role role);
+	List<Role> findByRoleName (String roleName);
 	
-	Role findById(Long id);
+	List<Role> findByDescriptionContainingOrderByIdAsc(String description);
 	
-	void delete(Role role);
+	@Query("SELECT r FROM Role r WHERE r.roleName=:roleName AND r.Description IS NOT NULL")
+	List<Role> findRoleWithNotNullDescription();
 }

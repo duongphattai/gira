@@ -1,6 +1,7 @@
 package cybersoft.javabackend.java11.gira.role.service;
 
-import org.hibernate.mapping.List;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,23 +16,25 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public void save(Role role) {
 		_repository.save(role);
+
 	}
 
 	@Override
-	public List findAll() {
+	public List<Role> findAll() {
 
-		return null;
+		return _repository.findAll();
 	}
 
 	@Override
-	public Role findById(Long id) {
-		return _repository.findById(id);
+	public List<Role> findByRoleName(String roleName) {
+		
+		return _repository.findByRoleName(roleName);
 	}
 
 	@Override
-	public void delete(Role role) {
-		_repository.delete(role);
-
+	public List<Role> findByDescription(String description) {
+		
+		return _repository.findByDescriptionContainingOrderByIdAsc(description);
 	}
 
 }
