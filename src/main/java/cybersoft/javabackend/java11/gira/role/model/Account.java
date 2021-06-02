@@ -18,10 +18,10 @@ public class Account {
 	private String username;
 	private String password;
 	private String email;
-
+	
 	@Column(name = "role_id", insertable = false, updatable = false)
 	private Long roleId;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "role_id")
 	private Role role;
@@ -73,5 +73,4 @@ public class Account {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-
 }
