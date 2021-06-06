@@ -10,12 +10,11 @@ import org.springframework.stereotype.Repository;
 import cybersoft.javabackend.java11.gira.role.model.Role;
 
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Long> {
-	
+public interface RoleRepository extends JpaRepository<Role, Long>{
 	List<Role> findByRoleName(String roleName);
-
+	
 	List<Role> findByDescriptionContainingOrderByIdAsc(String description);
-
+	
 	@Query("SELECT r FROM Role r WHERE r.roleName=:roleName AND r.description IS NOT NULL")
-	List<Role> findRoleWithNotNullDescription(@Param("roleName") String roleName);
+	List<Role> findRoleWithNotNullDescription(@Param("roleName")String roleName);
 }

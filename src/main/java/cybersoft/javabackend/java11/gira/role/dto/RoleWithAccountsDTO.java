@@ -10,8 +10,6 @@ public class RoleWithAccountsDTO {
 	private String description;
 	private Set<Account> accounts;
 	
-	
-	/* getters/setters */
 	public long getId() {
 		return id;
 	}
@@ -36,6 +34,5 @@ public class RoleWithAccountsDTO {
 	public void setAccounts(Set<Account> accounts) {
 		this.accounts = accounts;
 	}
-	
 	
 }
