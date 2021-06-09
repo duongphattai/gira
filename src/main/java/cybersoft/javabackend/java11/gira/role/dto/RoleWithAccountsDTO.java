@@ -1,15 +1,21 @@
 package cybersoft.javabackend.java11.gira.role.dto;
 
+import java.util.List;
 import java.util.Set;
 
 import cybersoft.javabackend.java11.gira.role.model.Account;
 
 public class RoleWithAccountsDTO {
+	/*
+	 * Data Transfer Object
+	 */
 	private long id;
 	private String roleName;
 	private String description;
 	private Set<Account> accounts;
 	
+	
+	/* getters/setters */
 	public long getId() {
 		return id;
 	}
@@ -34,5 +40,6 @@ public class RoleWithAccountsDTO {
 	public void setAccounts(Set<Account> accounts) {
 		this.accounts = accounts;
 	}
+	
 	
 }

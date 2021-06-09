@@ -4,8 +4,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import cybersoft.javabackend.java11.gira.role.dto.CreateRoleDto;
 import cybersoft.javabackend.java11.gira.role.dto.RoleWithAccountsDTO;
 import cybersoft.javabackend.java11.gira.role.model.Role;
 import cybersoft.javabackend.java11.gira.role.repository.RoleRepository;
@@ -14,7 +16,7 @@ import cybersoft.javabackend.java11.gira.role.repository.RoleRepository;
 public class RoleServiceImpl implements RoleService {
 	@Autowired
 	private RoleRepository _repository;
-
+	
 	@Override
 	public void save(Role role) {
 		_repository.save(role);
@@ -27,6 +29,7 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	public List<Role> findByRoleName(String roleName) {
+		// TODO: bài tập
 		return _repository.findByRoleName(roleName);
 	}
 
@@ -47,19 +50,19 @@ public class RoleServiceImpl implements RoleService {
 		System.out.println("Hold this line to debug.");
 		return results;
 	}
-
-	private List<RoleWithAccountsDTO> mapRoleToRoleWithAccountsDTO(List<Role> roles) {
+	
+	private List<RoleWithAccountsDTO> mapRoleToRoleWithAccountsDTO(List<Role> roles){
 		List<RoleWithAccountsDTO> results = new LinkedList<RoleWithAccountsDTO>();
-
+		
 		for (Role role : roles) {
 			RoleWithAccountsDTO dto = new RoleWithAccountsDTO();
 			mapRoleToDto(dto, role);
 			results.add(dto);
 		}
-
+		
 		return results;
 	}
-
+	
 	private void mapRoleToDto(RoleWithAccountsDTO dto, Role role) {
 		dto.setId(role.getId());
 		dto.setRoleName(role.getRoleName());
@@ -67,4 +70,20 @@ public class RoleServiceImpl implements RoleService {
 		dto.setAccounts(role.getAccounts());
 	}
 
+	@Override
+	public Role updateRoleInfo(CreateRoleDto dto, Long roleId) {
+		Role role = _repository.getOne(roleId);
+		role.roleName(dto.roleName)
+			.description(dto.description);
+		
+		return _repository.save(role);
+	}
+
+	@Override
+	public void deleteById(Long roleId) {
+		_repository.deleteById(roleId);
+		
+	}
+
+	
 }

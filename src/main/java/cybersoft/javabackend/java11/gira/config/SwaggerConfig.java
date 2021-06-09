@@ -16,15 +16,19 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 	@Bean
 	public Docket api() {
-		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("cybersoft.javabackend.java11.gira")).build()
+		return new Docket(DocumentationType.SWAGGER_2)
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("cybersoft.javabackend.java11.gira"))
+				.build()
 				.apiInfo(getApiInfo());
 	}
-
+	
 	private ApiInfo getApiInfo() {
-		return new ApiInfoBuilder().title("Gira Application").description("Gira for education purpose.")
-				.contact(new Contact("Dương Phát Tài", "tai.dev", "dptai7@gmail.com")).license("MIT2")
-				.build();
+		return new ApiInfoBuilder()
+			.title("Gira Application")
+			.description("Gira for education purpose.")
+			.contact(new Contact("Phan Thanh Tuấn", "tuanphan91@gmail.com", "tuanphan.dev"))
+			.license("MIT2")
+			.build();
 	}
-
 }

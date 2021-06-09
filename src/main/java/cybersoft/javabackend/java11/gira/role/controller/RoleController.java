@@ -8,18 +8,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.common.collect.Lists;
+
+import cybersoft.javabackend.java11.gira.commondata.model.ResponseObject;
 import cybersoft.javabackend.java11.gira.role.dto.CreateRoleDto;
 import cybersoft.javabackend.java11.gira.role.dto.RoleWithAccountsDTO;
 import cybersoft.javabackend.java11.gira.role.model.Role;
 import cybersoft.javabackend.java11.gira.role.service.RoleService;
+import cybersoft.javabackend.java11.gira.util.ErrorUtils;
+import cybersoft.javabackend.java11.gira.util.ListUtils;
 
 @RestController
 @RequestMapping("/api/role")
@@ -80,7 +87,9 @@ public class RoleController {
 	@PostMapping("")
 	public ResponseEntity<Object> save(@Valid @RequestBody CreateRoleDto dto, BindingResult errors){
 		if(errors.hasErrors())
-			return new ResponseEntity<>(errors.getAllErrors(), HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(
+					new ResponseObject(ErrorUtils.getErrorMessages(errors.getAllErrors())),
+					HttpStatus.BAD_REQUEST);
 		
 		Role role = new Role()
 							.roleName(dto.roleName)
@@ -90,5 +99,34 @@ public class RoleController {
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
+	@PutMapping("/{role-id}")
+	public ResponseEntity<Object> updateRoleInfo(
+			@Valid @RequestBody CreateRoleDto dto,
+			@PathVariable("role-id") Long roleId,
+			BindingResult errors){
+		if(errors.hasErrors())
+			return new ResponseEntity<>(
+					new ResponseObject(ErrorUtils.getErrorMessages(errors.getAllErrors())),
+					HttpStatus.BAD_REQUEST);
+		
+		Role updatedRole = _service.updateRoleInfo(dto, roleId);
+		
+		return new ResponseEntity<>(
+				new ResponseObject(updatedRole), HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/{role-id}")
+	public ResponseEntity<Object> deleteRoleById(@PathVariable("role-id")Long roleId){
+		if(roleId == null)
+			return new ResponseEntity<>(
+			new ResponseObject(ErrorUtils.errorOf("Role id is null")),
+			HttpStatus.BAD_REQUEST);
+		
+		_service.deleteById(roleId);
+		return new ResponseEntity<>(
+				new ResponseObject("Role has been deleted."),
+				HttpStatus.OK
+				);
+	}
 	
 }

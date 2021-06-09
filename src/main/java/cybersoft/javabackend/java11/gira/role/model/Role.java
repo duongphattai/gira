@@ -14,10 +14,15 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import cybersoft.javabackend.java11.gira.commondata.AbstractEntity;
+import cybersoft.javabackend.java11.gira.commondata.model.AbstractEntity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Table(name = "role")
+@Table(name = "gira_role")
 public class Role extends AbstractEntity {
 	
 	@NotBlank(message = "Role name can't be blank.")
@@ -42,6 +47,11 @@ public class Role extends AbstractEntity {
 	
 	public Role description(String description) {
 		this.description = description;
+		return this;
+	}
+	
+	public Role id(Long id) {
+		this.id = id;
 		return this;
 	}
 	
