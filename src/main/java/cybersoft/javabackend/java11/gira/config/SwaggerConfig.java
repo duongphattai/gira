@@ -27,7 +27,7 @@ public class SwaggerConfig {
 		return new ApiInfoBuilder()
 			.title("Gira Application")
 			.description("Gira for education purpose.")
-			.contact(new Contact("Phan Thanh Tuấn", "tuanphan91@gmail.com", "tuanphan.dev"))
+			.contact(new Contact("Dương Phát Tài", "phattai.dev", "dptai7@gmail.com"))
 			.license("MIT2")
 			.build();
 	}
