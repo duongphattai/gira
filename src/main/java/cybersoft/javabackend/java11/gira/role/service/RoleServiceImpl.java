@@ -2,9 +2,9 @@ package cybersoft.javabackend.java11.gira.role.service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import cybersoft.javabackend.java11.gira.role.dto.CreateRoleDto;
@@ -26,7 +26,7 @@ public class RoleServiceImpl implements RoleService {
 	public List<Role> findAll() {
 		return _repository.findAll();
 	}
-
+	
 	@Override
 	public List<Role> findByRoleName(String roleName) {
 		return _repository.findByRoleName(roleName);
