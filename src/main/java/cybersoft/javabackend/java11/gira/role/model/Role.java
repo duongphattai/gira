@@ -52,7 +52,6 @@ public class Role extends AbstractEntity {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return String.format("ROLE: %d %s %s", id, roleName, description);
 	}
 	

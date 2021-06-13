@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import cybersoft.javabackend.java11.gira.role.dto.CreateRoleDto;
@@ -72,8 +71,8 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public Role updateRoleInfo(CreateRoleDto dto, Long roleId) {
 		Role role = _repository.getOne(roleId);
-		role.roleName(dto.roleName)
-			.description(dto.description);
+		role.roleName(dto.getRoleName())
+			.description(dto.getDescription());
 		
 		return _repository.save(role);
 	}
@@ -82,6 +81,14 @@ public class RoleServiceImpl implements RoleService {
 	public void deleteById(Long roleId) {
 		_repository.deleteById(roleId);
 		
+	}
+
+	@Override
+	public Role save(CreateRoleDto dto) {
+		Role role = new Role();
+		role.roleName(dto.getRoleName())
+			.description(dto.getDescription());
+		return _repository.save(role);
 	}
 
 	

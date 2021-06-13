@@ -1,0 +1,37 @@
+package cybersoft.javabackend.java11.gira.user.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cybersoft.javabackend.java11.gira.commondata.GenericServiceImpl;
+import cybersoft.javabackend.java11.gira.user.dto.CreateUserDto;
+import cybersoft.javabackend.java11.gira.user.model.User;
+import cybersoft.javabackend.java11.gira.user.repository.UserRepository;
+
+@Service
+public class UserServiceImpl extends GenericServiceImpl<User, Long> implements UserService {
+	@Autowired
+	private UserRepository repository;
+	
+	
+	@Override
+	public User save(CreateUserDto dto) {
+		User user = new User();
+		user.username(dto.getUsername())
+			.password(dto.getPassword())
+			.email(dto.getEmail())
+			.displayName(dto.getDisplayName())
+			.fullName(dto.getFullName())
+			.status(dto.getStatus());
+		
+		return repository.save(user);
+	}
+	// done
+
+
+	@Override
+	public boolean isTakenUsername(String username) {
+		return repository.countByUsername(username) >= 1;
+	}
+
+}
