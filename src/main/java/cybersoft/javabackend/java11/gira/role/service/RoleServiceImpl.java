@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import cybersoft.javabackend.java11.gira.role.dto.CreateRoleDto;
@@ -28,6 +29,7 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	public List<Role> findByRoleName(String roleName) {
+		// TODO: bài tập
 		return _repository.findByRoleName(roleName);
 	}
 

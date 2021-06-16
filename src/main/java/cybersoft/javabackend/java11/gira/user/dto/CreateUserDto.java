@@ -1,6 +1,5 @@
 package cybersoft.javabackend.java11.gira.user.dto;
 
-import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

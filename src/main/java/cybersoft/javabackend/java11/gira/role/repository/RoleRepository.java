@@ -14,7 +14,7 @@ public interface RoleRepository extends JpaRepository<Role, Long>{
 	List<Role> findByRoleName(String roleName);
 	
 	List<Role> findByDescriptionContainingOrderByIdAsc(String description);
-	
+
 	@Query("SELECT r FROM Role r WHERE r.roleName=:roleName AND r.description IS NOT NULL")
 	List<Role> findRoleWithNotNullDescription(@Param("roleName")String roleName);
 }
