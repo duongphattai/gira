@@ -39,7 +39,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	private Set<GrantedAuthority> getAuthorities(Set<RoleGroup> roleGroups) {
 		Set<GrantedAuthority> authorities = new HashSet<>();
-		
+		 
 		Iterator<RoleGroup> iterator = roleGroups.iterator();
 		
 		while(iterator.hasNext()) 
