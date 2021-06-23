@@ -11,3 +11,7 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: update
+gira:
+  app:
+    jwt-secret: khongcochuoibimat
+    jwt-duration: 799977777
