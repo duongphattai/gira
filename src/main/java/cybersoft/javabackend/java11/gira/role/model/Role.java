@@ -15,6 +15,11 @@ import org.hibernate.validator.constraints.Length;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import cybersoft.javabackend.java11.gira.commondata.model.AbstractEntity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "gira_role")

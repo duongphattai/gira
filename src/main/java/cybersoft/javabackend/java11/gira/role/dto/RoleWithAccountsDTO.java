@@ -1,5 +1,6 @@
 package cybersoft.javabackend.java11.gira.role.dto;
 
+import java.util.List;
 import java.util.Set;
 
 import cybersoft.javabackend.java11.gira.role.model.Account;
