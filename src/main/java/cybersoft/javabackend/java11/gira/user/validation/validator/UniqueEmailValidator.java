@@ -8,8 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import cybersoft.javabackend.java11.gira.user.service.UserService;
 import cybersoft.javabackend.java11.gira.user.validation.annotation.UniqueEmail;
 
-public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String>{
-	
+public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, String> {
 	@Autowired
 	private UserService service;
 	
@@ -19,17 +18,17 @@ public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, St
 	public void initialize(UniqueEmail constraintAnnotation) {
 		this.message = constraintAnnotation.message();
 	}
-
+	
 	@Override
 	public boolean isValid(String email, ConstraintValidatorContext context) {
-		boolean isUsedEmail = service.isUsedEmail(email);
+		boolean isTakenEmail = service.isTakenEmail(email);
 		
-		if(!isUsedEmail)
+		if(!isTakenEmail)
 			return true;
 		
 		context.buildConstraintViolationWithTemplate(message)
-				.addConstraintViolation()
-				.disableDefaultConstraintViolation();
+			.addConstraintViolation()
+			.disableDefaultConstraintViolation();
 		
 		return false;
 	}

@@ -29,7 +29,6 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	public List<Role> findByRoleName(String roleName) {
-		// TODO: bài tập
 		return _repository.findByRoleName(roleName);
 	}
 

@@ -11,6 +11,6 @@ public interface UserService extends GenericService<User, Long> {
 
 	boolean isTakenUsername(String username);
 
-	boolean isUsedEmail(String email);
+	boolean isTakenEmail(String email);
 
 }

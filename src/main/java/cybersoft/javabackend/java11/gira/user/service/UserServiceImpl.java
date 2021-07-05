@@ -17,7 +17,6 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
-	
 	@Override
 	public User save(CreateUserDto dto) {
 		User user = new User();
@@ -30,17 +29,14 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements U
 		
 		return repository.save(user);
 	}
-	// done
-
 
 	@Override
 	public boolean isTakenUsername(String username) {
 		return repository.countByUsername(username) >= 1;
 	}
 
-
 	@Override
-	public boolean isUsedEmail(String email) {
+	public boolean isTakenEmail(String email) {
 		return repository.countByEmail(email) >= 1;
 	}
 

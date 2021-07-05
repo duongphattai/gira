@@ -15,9 +15,4 @@ public class CreateRoleDto {
 	
 	@NotBlank(message = "{role.description.notblank}")
 	private String description;
-	/*
-	 * @NotNull -> chỉ check null, không check rỗng
-	 * @NotEmpty -> chỉ check rỗng, không check space-trim
-	 * @NotBlank -> trim hết space đầu đuôi rồi mới check rỗng
-	 */
 }
