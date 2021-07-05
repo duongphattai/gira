@@ -14,10 +14,9 @@ import cybersoft.javabackend.java11.gira.user.validation.validator.UniqueEmailVa
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UniqueEmail {
-
 	public String message() default "Email is already used.";
-
+	
 	public Class<?>[] groups() default {};
-
+	
 	public Class<? extends Payload>[] payload() default {};
 }

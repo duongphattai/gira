@@ -17,6 +17,7 @@ import lombok.Setter;
 @Setter
 @ConfirmPassword(message = "{user.confirm-password}")
 public class CreateUserDto {
+	
 	@NotBlank(message = "{user.username.not-blank}")
 	@Size(min = 3, max = 50, message = "{user.username.size}")
 	@UniqueUsername

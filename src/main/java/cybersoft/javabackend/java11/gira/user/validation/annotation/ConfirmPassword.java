@@ -14,15 +14,13 @@ import cybersoft.javabackend.java11.gira.user.validation.validator.ConfirmPasswo
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ConfirmPassword {
-
 	public String getPassword() default "getPassword";
 	
 	public String getConfirmPassword() default "getConfirmPassword";
 	
 	public String message() default "Confirm password is not same with password.";
-
+	
 	public Class<?>[] groups() default {};
-
+	
 	public Class<? extends Payload>[] payload() default {};
-
 }
