@@ -61,7 +61,7 @@ public class User extends AbstractEntity{
 	private String department;
 	private String hobbies;
 	
-	@ManyToMany(mappedBy = "users", fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
 	//@JsonIgnore
 	private Set<RoleGroup> roleGroups = new HashSet<>();
 	

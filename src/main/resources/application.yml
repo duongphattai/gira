@@ -16,3 +16,4 @@ gira:
   app:
     jwt-secret: khongcochuoibimat
     jwt-duration: 799977777
+    
