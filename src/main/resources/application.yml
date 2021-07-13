@@ -12,6 +12,13 @@ spring:
     hibernate:
       ddl-auto: update
   jackson:    serialization:      fail-on-empty-beans: false
+logging:
+  level:
+    root: info
+    org.springframework: debug
+    '[cybersoft.javabackend.java11.gira]': DEBUG
+  pattern:
+    dateformat: yyyy-MM-dd HH:mm:ss
 gira:
   app:
     jwt-secret: khongcochuoibimat

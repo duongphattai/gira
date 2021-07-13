@@ -15,6 +15,7 @@ import javax.validation.constraints.Size;
 import com.sun.istack.NotNull;
 
 import cybersoft.javabackend.java11.gira.commondata.model.AbstractEntity;
+import cybersoft.javabackend.java11.gira.task.model.Task;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -38,4 +39,7 @@ public class WorkflowNode extends AbstractEntity {
 	
 	@OneToMany(mappedBy = "source", cascade = CascadeType.ALL)
 	private Set<WorkflowLink> linkTo = new HashSet<>();
+	
+	@OneToMany(mappedBy = "status", cascade = CascadeType.ALL)
+	private Set<Task> task = new HashSet<>();
 }
